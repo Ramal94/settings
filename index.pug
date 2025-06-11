@@ -1,0 +1,85 @@
+mixin toggleFormItem(label)
+	.form-item
+		label.form-item__label= label
+		.form-item__control.toggle
+			.toggle__handle
+
+.wrapper
+	.card
+		.card__header
+			.toolbar
+				.toolbar__item.toolbar__item--close
+				.toolbar__item.toolbar__item--min
+				.toolbar__item.toolbar__item--max
+			a(href="#") About
+		.card__body
+			.container
+				.grid
+					h1 Settings
+			.container
+				.grid.grid--half
+					h3 General
+					+toggleFormItem('Start at login')
+					+toggleFormItem('Hide window at start up')
+					+toggleFormItem('Keep window visible as bg app')
+					+toggleFormItem('Keep window above other apps')
+					+toggleFormItem('Show icon in dock')
+					+toggleFormItem('Hide "Unlock Extreme" button')
+					h3 Desktop Status Menu
+					+toggleFormItem('Use precentages')
+					+toggleFormItem('Icon visible')
+					.form-item
+						label.form-item__label Text information
+						.form-item__control
+							select.control.control--select
+								option(selected) Default
+								option Option 1
+								option Option 2
+								option Option 3
+					.form-item
+						label.form-item__label Text size
+						.form-item__control
+							.radio
+								.radio__item
+									span.u-text--small A
+								.radio__item.is-active
+									span.u-text--normal A
+								.radio__item
+									span.u-text--large A
+
+				.grid.grid--half
+					h3 Performance
+					.form-item
+						label.form-item__label Threshold level
+						.form-item__control
+							small
+								strong
+									span.slider__value 500
+									span mb
+						.slider
+							input.slider__input(type="range" value="500" min="0" max="1000")
+							.slider__positive(style="width: 50%;")
+					p
+						small If the available memory goes below this amount, the status bar text will turn red.
+					+toggleFormItem('Auto clean')
+					p
+						small Automatically clean when available memory drops below the above threshold. Auto clean is limited to once every 3 minutes.
+					+toggleFormItem('Disable auto clean cooldown')
+					p
+						small Auto clean cooldown: 
+							strong 136 seconds
+					.form-item
+						label.form-item__label Refresh interval
+						.form-item__control
+							small
+								strong
+									span.slider__value 5
+									span &nbsp;seconds
+						.slider
+							input.slider__input(type="range" value="5" min="0" max="20")
+							.slider__positive(style="width: 25%;")
+					p
+						small If the available memory goes below this amount, the status bar text will turn red.
+					.buttons
+						a(href="#") Extras
+						button.button Done
